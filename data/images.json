@@ -1,7 +1,7 @@
 [
   {
-    "description": "Whoa",
-    "image": "https://pbs.twimg.com/profile_images/657716113581604864/JEopyvYr_400x400.jpg",
+    "description": "WeWork",
+    "image": "https://github.com/heyglide/workagram/raw/master/data/images/1.jpg",
     "posted": {
       "Name": "David Siegel",
       "Title": "Founder, CEO",
@@ -11,7 +11,8 @@
     }
   },
   {
-    "image": "https://pbs.twimg.com/profile_images/657716113581604864/JEopyvYr_400x400.jpg",
+    "description": "Mark's smile(?)",
+    "image": "https://github.com/heyglide/workagram/raw/master/data/images/2.jpg",
     "posted": {
       "Name": "David Siegel",
       "Title": "Founder, CEO",
