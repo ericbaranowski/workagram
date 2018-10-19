@@ -1,60 +1,62 @@
-import React from 'react';
-import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import React from "react";
+import { Platform } from "react-native";
+import { createBottomTabNavigator } from "react-navigation";
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import TabBarIcon from "../components/TabBarIcon";
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
-});
+import { createGlideStackNavigator as createEmployeesScreen } from "glide-embed-employees";
+import { createGlideStackNavigator as createEmployeeScreen } from "glide-embed-employee";
+import { createGlideStackNavigator as createImagesScreen } from "glide-embed-images";
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+const EmployeesScreen = createEmployeesScreen();
+const EmployeeScreen = createEmployeeScreen();
+const ImagesScreen = createImagesScreen();
+
+const tabBarIcon = ({ ios, android }) => ({ focused }) => (
+  <TabBarIcon
+    focused={focused}
+    name={Platform.OS === "ios" ? ios(focused) : android(focused)}
+  />
+);
+
+EmployeesScreen.navigationOptions = {
+  tabBarLabel: "Employees",
+  tabBarIcon: tabBarIcon({
+    ios: focused => `ios-information-circle${focused ? "" : "-outline"}`,
+    android: () => "md-information-circle"
+  })
+};
+
+ImagesScreen.navigationOptions = {
+  tabBarLabel: "Photos",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+        Platform.OS === "ios"
+          ? `ios-link${focused ? "" : "-outline"}`
+          : "md-link"
       }
     />
-  ),
+  )
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
-});
-
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+EmployeeScreen.navigationOptions = {
+  tabBarLabel: "Me",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+      name={
+        Platform.OS === "ios"
+          ? `ios-options${focused ? "" : "-outline"}`
+          : "md-options"
+      }
     />
-  ),
-};
-
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-});
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
-    />
-  ),
+  )
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
+  EmployeesScreen,
+  ImagesScreen,
+  EmployeeScreen
 });
