@@ -9,7 +9,6 @@ import { createGlideStackNavigator as createEmployeesScreen } from "glide-employ
 import { createGlideStackNavigator as createEmployeeScreen } from "glide-employee";
 import { createGlideStackNavigator as createPhotosScreen } from "glide-photos";
 
-
 const EmployeesScreen = () =>
   <FetchContextScreen
     component={createEmployeesScreen()}
@@ -34,37 +33,25 @@ const tabBarIcon = ({ ios, android }) => ({ focused }) => (
 EmployeesScreen.navigationOptions = {
   tabBarLabel: "Employees",
   tabBarIcon: tabBarIcon({
-    ios: focused => `ios-information-circle${focused ? "" : "-outline"}`,
-    android: () => "md-information-circle"
+    ios: () => "ios-people",
+    android: () => "md-people"
   })
 };
 
 ImagesScreen.navigationOptions = {
   tabBarLabel: "Photos",
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === "ios"
-          ? `ios-link${focused ? "" : "-outline"}`
-          : "md-link"
-      }
-    />
-  )
+  tabBarIcon: tabBarIcon({
+    ios: () => "ios-camera",
+    android: () => "md-camera"
+  })
 };
 
 EmployeeScreen.navigationOptions = {
   tabBarLabel: "Me",
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === "ios"
-          ? `ios-options${focused ? "" : "-outline"}`
-          : "md-options"
-      }
-    />
-  )
+  tabBarIcon: tabBarIcon({
+    ios: () => "ios-person",
+    android: () => "md-person"
+  })
 };
 
 export default createBottomTabNavigator({
