@@ -15,9 +15,9 @@
   "dependencies": {
     "@expo/samples": "2.1.1",
     "expo": "^30.0.1",
-    "glide-embed-employee": "file:glide/employee",
-    "glide-embed-employees": "file:glide/employees",
-    "glide-embed-images": "file:glide/images",
+    "glide-employee": "https://npm.heyglide.com/v1/axg9g8TEF0ILdflFWwLE",
+    "glide-employees": "https://npm.heyglide.com/v1/n0piaanuHKwzcXrZ7Cga",
+    "glide-photos": "https://npm.heyglide.com/v1/YUEp2a1mNSfupSEq4Dg2",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
     "react-navigation": "^2.16.0"

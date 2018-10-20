@@ -3,14 +3,26 @@ import { Platform } from "react-native";
 import { createBottomTabNavigator } from "react-navigation";
 
 import TabBarIcon from "../components/TabBarIcon";
+import FetchContextScreen from "../components/FetchContextScreen";
 
-import { createGlideStackNavigator as createEmployeesScreen } from "glide-embed-employees";
-import { createGlideStackNavigator as createEmployeeScreen } from "glide-embed-employee";
-import { createGlideStackNavigator as createImagesScreen } from "glide-embed-images";
+import { createGlideStackNavigator as createEmployeesScreen } from "glide-employees";
+import { createGlideStackNavigator as createEmployeeScreen } from "glide-employee";
+import { createGlideStackNavigator as createPhotosScreen } from "glide-photos";
 
-const EmployeesScreen = createEmployeesScreen();
+
+const EmployeesScreen = () =>
+  <FetchContextScreen
+    component={createEmployeesScreen()}
+    url="https://raw.githubusercontent.com/heyglide/workagram/master/data/employees.json"
+  />;
+
 const EmployeeScreen = createEmployeeScreen();
-const ImagesScreen = createImagesScreen();
+
+const ImagesScreen = () =>
+  <FetchContextScreen
+    component={createPhotosScreen()}
+    url="https://raw.githubusercontent.com/heyglide/workagram/master/data/images.json"
+  />;
 
 const tabBarIcon = ({ ios, android }) => ({ focused }) => (
   <TabBarIcon
